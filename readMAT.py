@@ -14,8 +14,8 @@ def return_type_as_string(in_var):
         return "string"
     elif type(in_var) == int:
         return "integer"
-
-print("3. Read General .MAT File--------------------")
+# second version
+print("3. Read General .MAT File--------------------------")
 from loadMATLib import loadmat
 overall_mat_path = 'newMat.mat'
 print("3.1 new mat loop")
