@@ -4,8 +4,9 @@ import json
 import warnings
 import numpy as np
 import glob, os
-
 warnings.filterwarnings('ignore')
+
+from readMAT import read_general_mat
 
 # print("1. Authorizing-------------------")
 # session = requests.session()
@@ -40,6 +41,7 @@ warnings.filterwarnings('ignore')
 # dict_out = json.loads(response.text)
 # print(dict_out['artifactID'])
 
+print("3. Read Files --------------------------")
 os.chdir("./testDataFolder")
 list_file = [] 
 for file in glob.glob("*.mat"):
@@ -50,3 +52,18 @@ list_wfm = []
 [list_wfm.append(list_file[i]) for i in range(len(list_file)) if rep in list_file[i]]
 list_general_mat = []
 [list_general_mat.append(list_file[i]) for i in range(len(list_file)) if rep not in list_file[i]]
+
+os.chdir("..")
+output_folder_name = "./output_json/"
+if not os.path.exists(output_folder_name):
+    os.makedirs(output_folder_name)
+
+read_general_mat(list_general_mat[0])
+
+# from loadMATLib import loadmat
+# from pathlib import Path
+
+# overall_mat = loadmat('./testDataFolder/mat_plus_new_metadata_sample=1[].mat')
+
+# dt = overall_mat['subsets']['data']
+# print(dt)
