@@ -18,7 +18,11 @@ def return_type_as_string(in_var):
         return "integer"
 
 def read_general_mat(in_file_name):
-    print("3. Read General .MAT File--------------------------")
+    print("3.1 Read General .MAT File--------------------------")
+
+    subfolder_check = '/testDataFolder'
+    if subfolder_check not in os.getcwd():
+        os.chdir("./testDataFolder")
 
     overall_mat = loadmat(in_file_name)
 
@@ -27,15 +31,16 @@ def read_general_mat(in_file_name):
     test_corners_start = 8
     
     num_params = np.count_nonzero(dt[0,:] == 'param')
-
     index_out = np.where(dt[0,:] == 'out')
     index_aux = np.where(dt[0,:] == 'aux')
 
     # have to move one folder up
 
+    output_file_path = '../output_json/' + in_file_name.replace('.mat' , '.json')
+
     first_json_write = {}
     first_json_write['deepIndexing'] = []
-    with open('./output_json/out_json_new.json', 'w', encoding='utf-8') as outfile:
+    with open(output_file_path, 'w', encoding='utf-8') as outfile:
             json.dump(first_json_write, outfile, indent=4)
 
     conditions_mat = []
@@ -80,7 +85,7 @@ def read_general_mat(in_file_name):
             out_json['channel']['pathtype'] = "atv_ps_mat"
             out_json['channel']['pathspec'] = "subsets.data{" + str(idx+1) + "," + str(idx_out+1) + "}"
 
-            with open('./output_json/out_json_new.json', "r+") as outfile:
+            with open(output_file_path, "r+") as outfile:
                 data = json.load(outfile)
                 #data.update(out_json)
                 data['deepIndexing'].append(out_json) #first_json_write['deepIndexing'].append(out_json)
@@ -99,7 +104,7 @@ def read_general_mat(in_file_name):
             out_json['channel']['pathtype'] = "atv_ps_mat"
             out_json['channel']['pathspec'] = "subsets.data{" + str(idx+1) + "," + str(idx_aux+1) + "}"
 
-            with open('./output_json/out_json_new.json', "r+") as outfile:
+            with open(output_file_path, "r+") as outfile:
                 data = json.load(outfile)
                 #data.update(out_json)
                 data['deepIndexing'].append(out_json) #first_json_write['deepIndexing'].append(out_json)

@@ -7,6 +7,7 @@ import glob, os
 warnings.filterwarnings('ignore')
 
 from readMAT import read_general_mat
+from readWfm import read_waveform_mat
 
 # print("1. Authorizing-------------------")
 # session = requests.session()
@@ -59,6 +60,12 @@ if not os.path.exists(output_folder_name):
     os.makedirs(output_folder_name)
 
 read_general_mat(list_general_mat[0])
+
+for i in range(len(list_wfm)):
+    read_waveform_mat(list_wfm[i])
+
+os.chdir("..")
+
 
 # from loadMATLib import loadmat
 # from pathlib import Path

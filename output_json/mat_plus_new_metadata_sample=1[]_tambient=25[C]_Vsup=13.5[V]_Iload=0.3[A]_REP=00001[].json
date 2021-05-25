@@ -1,0 +1,76 @@
+{
+    "deepIndexing": [
+        {
+            "artifact_metadata": {
+                "artifact_id": "This is the Nr. 1 test corner.",
+                "username": "Xing Jin",
+                "source": "local test",
+                "filetype": "atv-ps-wfm"
+            },
+            "metadata": {
+                "timestamp": "dummy value"
+            },
+            "operating_conditions": [
+                {
+                    "name": "tambient",
+                    "value": "25",
+                    "unit": "C"
+                },
+                {
+                    "name": "Vsup",
+                    "value": "13.5",
+                    "unit": "V"
+                },
+                {
+                    "name": "Iload",
+                    "value": "0.3",
+                    "unit": "A"
+                }
+            ],
+            "channel": {
+                "metadata": {
+                    "name": "VQ",
+                    "type": "double"
+                },
+                "pathtype": "atv_ps_wfm",
+                "pathspec": "data{1, 1}.out.VQ"
+            }
+        },
+        {
+            "artifact_metadata": {
+                "artifact_id": "This is the Nr. 1 test corner.",
+                "username": "Xing Jin",
+                "source": "local test",
+                "filetype": "atv-ps-wfm"
+            },
+            "metadata": {
+                "timestamp": "dummy value"
+            },
+            "operating_conditions": [
+                {
+                    "name": "tambient",
+                    "value": "25",
+                    "unit": "C"
+                },
+                {
+                    "name": "Vsup",
+                    "value": "13.5",
+                    "unit": "V"
+                },
+                {
+                    "name": "Iload",
+                    "value": "0.3",
+                    "unit": "A"
+                }
+            ],
+            "channel": {
+                "metadata": {
+                    "name": "Reg2",
+                    "type": "integer"
+                },
+                "pathtype": "atv_ps_wfm",
+                "pathspec": "data{1, 1}.out.Reg2"
+            }
+        }
+    ]
+}
