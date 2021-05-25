@@ -20,22 +20,25 @@ def return_type_as_string(in_var):
 def read_general_mat(in_file_name):
     print("3.1 Read General .MAT File--------------------------")
 
-    subfolder_check = '/testDataFolder'
+    # check whether current working directory is the folder containing data files 
+    subfolder_check = r"\testDataFolder"
     if subfolder_check not in os.getcwd():
         os.chdir("./testDataFolder")
 
     overall_mat = loadmat(in_file_name)
 
+    # go inside the data filed of the data 
     dt = overall_mat['subsets']['data']
     dim_m, dim_n = dt.shape
+    # test corners start from the 9th row, 8 rows for metadata and keywords 
     test_corners_start = 8
     
     num_params = np.count_nonzero(dt[0,:] == 'param')
+    # get the column index of the out 
     index_out = np.where(dt[0,:] == 'out')
     index_aux = np.where(dt[0,:] == 'aux')
 
-    # have to move one folder up
-
+    # create output file, have to move one folder up, have to move one folder up
     output_file_path = '../output_json/' + in_file_name.replace('.mat' , '.json')
 
     first_json_write = {}
@@ -59,7 +62,6 @@ def read_general_mat(in_file_name):
         # construct channel block 
         # out:{'channel': {'metadata': {'name': 'Reg2', 'type': 'integer'}}, 'pathtype': 'atv_ps_mat', 'pathspec': 'subsets.data{9,6}'}
         
-
         out_json = {}  
         out_json['artifact_metadata'] = {}
         out_json['artifact_metadata']['artifact_id'] = "This is the Nr." + str(idx-7) + " test corner."

@@ -1,4 +1,5 @@
 from readMAT import return_type_as_string
+from loadMATLib import loadmat
 
 import requests
 from requests_negotiate_sspi import HttpNegotiateAuth
@@ -8,30 +9,29 @@ import numpy as np
 import os 
 
 import shutil
-from loadMATLib import loadmat
-
 
 
 def read_waveform_mat(in_file_name):
     print("3.2 Read Wavefrom .MAT File--------------------------")
 
+    # check whether current working directory is the folder containing data files 
     subfolder_check = r"\testDataFolder"
-    print(os.getcwd())
     if subfolder_check not in os.getcwd():
         os.chdir("./testDataFolder")
 
     wfm_mat = loadmat(in_file_name)
 
     dt = wfm_mat['data']
-
+    # create output file with the name of the test project and conditions
     output_file_path = '../output_json/' + in_file_name.replace('.mat' , '.json')
 
+    # multiple blocks should be inside a array struct
     first_json_write = {}
     first_json_write['deepIndexing'] = []
     with open(output_file_path, 'w', encoding='utf-8') as outfile:
             json.dump(first_json_write, outfile, indent=4)
 
-    #get conditions
+    # get conditions for the current test corner 
     dt_params = dt['param']
     condition_mat = []
 
@@ -44,6 +44,7 @@ def read_waveform_mat(in_file_name):
         cond_dict['unit'] = dt_params_middle['unit']
         condition_mat.append(cond_dict)  
 
+    # construct other fields 
     out_json = {}  
     out_json['artifact_metadata'] = {}
     out_json['artifact_metadata']['artifact_id'] = "This is the Nr. 1 test corner."
@@ -57,7 +58,7 @@ def read_waveform_mat(in_file_name):
     out_json['operating_conditions'] = {}
     out_json['operating_conditions'] = condition_mat
 
-
+    # construct channle field 
     dt_out = dt['out']
     #loop over all out
     for key_out in dt_out.keys():
@@ -72,6 +73,7 @@ def read_waveform_mat(in_file_name):
         out_json['channel']['pathtype'] = "atv_ps_wfm"
         out_json['channel']['pathspec'] = "data{1, 1}.out." + str(key_out)
 
+        # append current block into json 
         with open(output_file_path, "r+") as outfile:
             data = json.load(outfile)
             #data.update(out_json)
