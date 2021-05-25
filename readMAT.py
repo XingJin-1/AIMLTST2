@@ -15,7 +15,7 @@ def return_type_as_string(in_var):
     elif type(in_var) == int:
         return "integer"
 
-print("3. Read General .MAT File-------------------")
+print("3. Read General .MAT File--------------------")
 from loadMATLib import loadmat
 overall_mat_path = 'newMat.mat'
 print("3.1 new mat loop")
@@ -23,7 +23,7 @@ overall_mat = loadmat(overall_mat_path)
 dt = overall_mat['subsets']['data']
 dim_m, dim_n = dt.shape
 test_corners_start = 8
-
+   
 num_params = np.count_nonzero(dt[0,:] == 'param')
 
 index_out = np.where(dt[0,:] == 'out')
