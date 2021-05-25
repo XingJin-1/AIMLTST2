@@ -112,20 +112,3 @@ def read_general_mat(in_file_name):
                 data['deepIndexing'].append(out_json) #first_json_write['deepIndexing'].append(out_json)
                 outfile.seek(0)
                 json.dump(data, outfile, indent=4)
-
-
-
-    # print(len(conditions_mat)) #out: 27 
-    # print(conditions_mat[5]) #out: [{'name': 'tambient', 'value': -40, 'unit': 'C'}, {'name': 'Vsup', 'value': 13.5, 'unit': 'V'}, {'name': 'Iload', 'value': 0.1, 'unit': 'A'}]
-
-    # out_json = {}
-    # out_json["operating_conditions"] = []
-    # for i in range(len(conditions_mat)):
-    #     out_json["operating_conditions"].append(conditions_mat[i])
-
-    # with open('out_json.txt', 'w', encoding='utf-8') as outfile:
-    #     json.dump(out_json, outfile, indent=4)
-
-    # print(json.dumps(conditions_mat[5], indent=4))
-    # print(dt[0,:])
-    # print(dt[0,:][0])
