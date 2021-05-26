@@ -134,10 +134,10 @@ for i in range(len(wfm_mat_files)):
     read_waveform_mat(wfm_mat_files[i])
 os.chdir("..")
 
-print("5. Deleting-------------------")
-# list_mat_id gets from uploading procedure 
-for arti_id in list_mat_id:
-    #artifact_id = '4a928ba978aa4e0787757cb6ee69dd1a'
-    artifact_id = arti_id
-    response = session.delete(f'{base_url}/v1/projects/{project_key}/artifacts/{artifact_id}')
-    print('Response Received: ' + str(response.status_code) + ': ' + response.text)
+# print("5. Deleting-------------------")
+# # list_mat_id gets from uploading procedure 
+# for arti_id in list_mat_id:
+#     #artifact_id = '4a928ba978aa4e0787757cb6ee69dd1a'
+#     artifact_id = arti_id
+#     response = session.delete(f'{base_url}/v1/projects/{project_key}/artifacts/{artifact_id}')
+#     print('Response Received: ' + str(response.status_code) + ': ' + response.text)
