@@ -31,18 +31,17 @@ session.headers.update(headers)
 print("2. Uploading-------------------")
 # license needs to be copied into the data storage folder since .post needs the check of the license and at the same time uploading procedure happens in the data folder
 shutil.copy('ca-bundle.crt', './testDataFolder')
+
 # get all files with .mat suffix isnide the given data storage folder 
 os.chdir("./testDataFolder")
 list_file = [] 
 for file in glob.glob("*.mat"):
     list_file.append(file)
 
+# needed for json log file 
 list_mat_id = []
 list_mat_name = []
 list_mat_lastUpdated = []
-# list_wfm_id = []
-# list_general_mat_id =[]
-
 for mat_file in list_file:
     #filename = 'outNew_12May2021141644.mat' # Path to the raw data file to be uploaded
     filename = mat_file # Path to the raw data file to be uploaded
@@ -58,14 +57,14 @@ for mat_file in list_file:
     list_mat_name.append(dict_out['rawDataFile']['fileName'])
     list_mat_lastUpdated.append(dict_out['lastUpdated'])
 print(len(list_mat_id))
-print(len(list_mat_name))
 os.chdir("..")
 
-# write to log json 
+# write id, name and last modified date to the log json file  
 json_upload = {}
 json_upload_wfm = []
 for i in range(len(list_mat_name)):
     tmp_mat= {}
+    # check whether current file is the general .mat file or waveform 
     if rep not in list_mat_name[i]:
         tmp_mat['mat_id'] =list_mat_id[i]
         tmp_mat['file_name'] = list_mat_name[i]
@@ -86,14 +85,13 @@ with open(output_file_path, 'w', encoding='utf-8') as outfile:
 
 print("3. Downloading-------------------")
 # currently inside the root directory 
-# create folder for the uploaded data 
+
+# create folder for the storing downlowded data 
 downlaod_file_folder_name = "./download_files/"
 if not os.path.exists(downlaod_file_folder_name):
     os.makedirs(downlaod_file_folder_name)
-#os.chdir("./download_files")
-# !!!!! later need to modify the storage path of the id json file.
-# shutil.copy('../upload_files.json', './')
-# shutil.copy('../ca-bundle.crt', './')
+
+# get all to be downloaded files
 gen_mat_file = {}
 wfm_mat_files = {}
 with open('upload_files.json', "r") as uploaded_json:
@@ -104,7 +102,7 @@ with open('upload_files.json', "r") as uploaded_json:
 list_mat_files = []
 list_mat_files = wfm_mat_files
 list_mat_files.append(gen_mat_file)
-
+# dont need to distinguish general and wfm .mat files here 
 for mat_file in list_mat_files:
     local_filename = mat_file['file_name']
     artifact_id = mat_file['mat_id']
@@ -115,27 +113,15 @@ for mat_file in list_mat_files:
     print('Response Received: ' + str(response.status_code))
 # until this part, all .mat has been downloaded to the /download_files folder and license was copied into it--> used for the api request 
 
-print("4. Read Files --------------------------")
+print("4. Read Files -------------------")
 # currently inside the root directory 
-
-# # get all files with .mat suffix isnide the given data storage folder 
-# os.chdir("./download_files")
-# list_file = [] 
-# for file in glob.glob("*.mat"):
-#     list_file.append(file)
-# # use REP to distinguish between general .mat file and waveform files 
-# rep = "REP"
-# list_wfm = []
-# [list_wfm.append(list_file[i]) for i in range(len(list_file)) if rep in list_file[i]]
-# list_general_mat = []
-# [list_general_mat.append(list_file[i]) for i in range(len(list_file)) if rep not in list_file[i]]
-# os.chdir("..")
 
 # create output json folder 
 output_folder_name = "./output_json/"
 if not os.path.exists(output_folder_name):
     os.makedirs(output_folder_name)
 
+# get all downloaded and to be analyzed files
 with open('upload_files.json', "r") as uploaded_json:
     data = json.load(uploaded_json)
     gen_mat_file = data['general_mat']
