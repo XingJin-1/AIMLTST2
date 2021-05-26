@@ -1,0 +1,116 @@
+{
+    "general_mat": {
+        "mat_id": "8d1fe5515ae74086a8b8bc8b68da650b",
+        "file_name": "mat_plus_new_metadata_sample=1[].mat"
+    },
+    "wfm_mat": [
+        {
+            "mat_id": "1f6035bca16a4d59a1ed708c5fa0cd91",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=13.5[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "9b8b77927d32489480eb90bafc6db8d8",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=13.5[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "3c5ccdaf19dd462390adf10cac5eac4b",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=13.5[V]_Iload=0.5[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "7801d411a4a5498db51fd83d930a47f3",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=18[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "a9a2d36cb81e4f91ab6f95611e77b743",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=18[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "448e918ba59244c58001be0bf2206118",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=18[V]_Iload=0.5[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "5d32f28e8ed746469b61935e73b51bb8",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=28[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "5d04f45374d648189004d4e1a22d3304",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=28[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "7d6f63478a944615973c29bc7dd07884",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=-40[C]_Vsup=28[V]_Iload=0.5[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "bbaac3c0cc434b0eaed3c76a56363576",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=13.5[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "0d54ef8972f648828337124fc8d6bb11",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=13.5[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "477aa7baba44440e8b8929d5fc7fff80",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=13.5[V]_Iload=0.5[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "3e0ff5335c2140ae9df541aa2b370909",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=18[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "40506d13497d4d81ba7eb25d519e8198",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=18[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "a27dcb296b834d178a513bd294bed39f",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=18[V]_Iload=0.5[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "aa44beab49aa432e9997bcdeadf5348f",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=28[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "c59376812af6482ba63a405e9e3daeed",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=28[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "351e091cfe2c4341b739bbc70f0c1c2a",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=150[C]_Vsup=28[V]_Iload=0.5[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "afb35c58e39b494e88d9634a3e4f394b",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=13.5[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "4d8ec4a438fc43b9a871d865831e86bf",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=13.5[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "953d89bd4b044febbfa3d21d07ae3a03",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=13.5[V]_Iload=0.5[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "3c237491cccf44c6a92843699b19c952",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=18[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "fffcb93a973f4210953d261d49db81fd",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=18[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "788a9bc6102d4ef98554890afdd10cbd",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=18[V]_Iload=0.5[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "43f8cefa42664dc29d02f8927082a83e",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=28[V]_Iload=0.1[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "76bbdcc47fc044a68bf366db28b37d47",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=28[V]_Iload=0.3[A]_REP=00001[].mat"
+        },
+        {
+            "mat_id": "874e25571fdc40a39faebcd866491735",
+            "file_name": "mat_plus_new_metadata_sample=1[]_tambient=25[C]_Vsup=28[V]_Iload=0.5[A]_REP=00001[].mat"
+        }
+    ]
+}

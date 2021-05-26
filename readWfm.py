@@ -15,9 +15,9 @@ def read_waveform_mat(in_file_name):
     print("3.2 Read Wavefrom .MAT File--------------------------")
 
     # check whether current working directory is the folder containing data files 
-    subfolder_check = r"\testDataFolder"
+    subfolder_check = r"\download_files"
     if subfolder_check not in os.getcwd():
-        os.chdir("./testDataFolder")
+        os.chdir("./download_files")
 
     wfm_mat = loadmat(in_file_name)
 
