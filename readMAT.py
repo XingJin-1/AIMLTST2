@@ -17,7 +17,7 @@ def return_type_as_string(in_var):
     elif type(in_var) == int:
         return "integer"
 
-def read_general_mat(in_file_name):
+def read_general_mat(in_mat_file):
     print("3.1 Read General .MAT File--------------------------")
 
     # check whether current working directory is the folder containing data files 
@@ -25,7 +25,7 @@ def read_general_mat(in_file_name):
     if subfolder_check not in os.getcwd():
         os.chdir("./download_files")
 
-    overall_mat = loadmat(in_file_name)
+    overall_mat = loadmat(in_mat_file['file_name'])
 
     # go inside the data filed of the data 
     dt = overall_mat['subsets']['data']
@@ -39,7 +39,7 @@ def read_general_mat(in_file_name):
     index_aux = np.where(dt[0,:] == 'aux')
 
     # create output file, have to move one folder up, have to move one folder up
-    output_file_path = '../output_json/' + in_file_name.replace('.mat' , '.json')
+    output_file_path = '../output_json/' + in_mat_file['file_name'].replace('.mat' , '.json')
 
     first_json_write = {}
     first_json_write['deepIndexing'] = []
@@ -64,13 +64,14 @@ def read_general_mat(in_file_name):
         
         out_json = {}  
         out_json['artifact_metadata'] = {}
-        out_json['artifact_metadata']['artifact_id'] = "This is the Nr." + str(idx-7) + " test corner."
+        #out_json['artifact_metadata']['artifact_id'] = "This is the Nr." + str(idx-7) + " test corner."
+        out_json['artifact_metadata']['artifact_id'] = in_mat_file['mat_id']
         out_json['artifact_metadata']['username'] = "Xing Jin"
         out_json['artifact_metadata']['source'] = "local test"
         out_json['artifact_metadata']['filetype'] = "atv-ps-mat"
 
         out_json['metadata'] = {}
-        out_json['metadata']['timestamp'] = "dummy value"
+        out_json['metadata']['timestamp'] = in_mat_file['lastUpdated']
 
         out_json['operating_conditions'] = {}
         out_json['operating_conditions'] = condition_mat

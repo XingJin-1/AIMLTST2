@@ -2,13 +2,13 @@
     "deepIndexing": [
         {
             "artifact_metadata": {
-                "artifact_id": "This is the Nr. 1 test corner.",
+                "artifact_id": "e4c1abd6a7ed4b1c9059f902007bf0ca",
                 "username": "Xing Jin",
                 "source": "local test",
                 "filetype": "atv-ps-wfm"
             },
             "metadata": {
-                "timestamp": "dummy value"
+                "timestamp": "2021-05-26T14:09:40"
             },
             "operating_conditions": [
                 {
@@ -38,13 +38,13 @@
         },
         {
             "artifact_metadata": {
-                "artifact_id": "This is the Nr. 1 test corner.",
+                "artifact_id": "e4c1abd6a7ed4b1c9059f902007bf0ca",
                 "username": "Xing Jin",
                 "source": "local test",
                 "filetype": "atv-ps-wfm"
             },
             "metadata": {
-                "timestamp": "dummy value"
+                "timestamp": "2021-05-26T14:09:40"
             },
             "operating_conditions": [
                 {
