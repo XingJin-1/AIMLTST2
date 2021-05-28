@@ -2,7 +2,7 @@ import glob, os
 import numpy as np
 import json
 import shutil
-
+import pathlib
 import requests
 from requests_negotiate_sspi import HttpNegotiateAuth
 import warnings
@@ -11,6 +11,10 @@ warnings.filterwarnings('ignore')
 
 from readMAT import read_general_mat
 from readWfm import read_waveform_mat
+
+# Paths to the root of the project and the `data` subfolder.
+PROJECT_ROOT = pathlib.Path(__file__).parent.resolve()
+DATA_ROOT = PROJECT_ROOT / 'testDataFolder'
 
 class Data_Uploader:
     def __init__(self, base_url, project_key):
@@ -87,7 +91,6 @@ class Data_Uploader:
         with open(output_file_path, 'w', encoding='utf-8') as outfile:
                 json.dump(json_upload, outfile, indent=4)
         # until this part, all .mat has been uploaded to DL and a json file is generated 
-
 
 class Deep_Indexing_Agent:
     def __init__(self, base_url, project_key):
@@ -171,11 +174,13 @@ class Deep_Indexing_Agent:
     #         response = self.session.delete(f'{self.base_url}/v1/projects/{self.project_key}/artifacts/{artifact_id}')
     #         print('Response Received: ' + str(response.status_code) + ': ' + response.text)
 
-
 def main():
     print("---------------------This is the start of the main funciton.------------------------")
+    print("PROJECT_ROOT: ", PROJECT_ROOT)
+    print("DATA_ROOT: ", DATA_ROOT)
     base_url = 'https://aimlms.muc-gp.icp.infineon.com'
     project_key = 'AIMLTST2'
+
     data_uploader = Data_Uploader(base_url, project_key)
     data_uploader.connect_to_DL()
     data_uploader.upload_files()
