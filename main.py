@@ -3,12 +3,14 @@ import numpy as np
 import json
 import shutil
 import pathlib
+import time
 import requests
 from requests_negotiate_sspi import HttpNegotiateAuth
 import warnings
 
 warnings.filterwarnings('ignore')
 
+from alive_progress import alive_bar
 from readMAT import read_general_mat
 from readWfm import read_waveform_mat
 
@@ -52,20 +54,26 @@ class Data_Uploader:
         list_mat_id = []
         list_mat_name = []
         list_mat_lastUpdated = []
-        for mat_file in list_file:
-            #filename = 'outNew_12May2021141644.mat' # Path to the raw data file to be uploaded
-            filename = mat_file # Path to the raw data file to be uploaded
-            metadata = { }
-            files = {
-                'metadata': (None, json.dumps(metadata), 'application/json'),
-                'rawDataFile': (filename, open(filename, 'rb'), 'text/plain')
-            }
-            response = self.session.post(f'{self.base_url}/v1/projects/{self.project_key}/artifacts', files=files)
-            #print('Response Received: ' + str(response.status_code) + ': ' + response.text)
-            dict_out = json.loads(response.text) # dict_out['artifactID'] out: 8d066226050448789f87a5c548d677e5 # dict_out['rawDataFile']['fileName'] out: outNew_12May2021141644.mat
-            list_mat_id.append(dict_out['artifactID'])
-            list_mat_name.append(dict_out['rawDataFile']['fileName'])
-            list_mat_lastUpdated.append(dict_out['lastUpdated'])
+        with alive_bar(len(list_file)) as bar:
+            for mat_file in list_file:
+                bar()
+
+                #filename = 'outNew_12May2021141644.mat' # Path to the raw data file to be uploaded
+                filename = mat_file # Path to the raw data file to be uploaded
+                metadata = { }
+                files = {
+                    'metadata': (None, json.dumps(metadata), 'application/json'),
+                    'rawDataFile': (filename, open(filename, 'rb'), 'text/plain')
+                }
+                response = self.session.post(f'{self.base_url}/v1/projects/{self.project_key}/artifacts', files=files)
+                #print('Response Received: ' + str(response.status_code) + ': ' + response.text)
+                dict_out = json.loads(response.text) # dict_out['artifactID'] out: 8d066226050448789f87a5c548d677e5 # dict_out['rawDataFile']['fileName'] out: outNew_12May2021141644.mat
+                list_mat_id.append(dict_out['artifactID'])
+                list_mat_name.append(dict_out['rawDataFile']['fileName'])
+                list_mat_lastUpdated.append(dict_out['lastUpdated'])
+
+                time.sleep(0.1)
+
         print(len(list_mat_id))
         os.chdir("..")
 
@@ -133,14 +141,19 @@ class Deep_Indexing_Agent:
         list_mat_files = wfm_mat_files
         list_mat_files.append(gen_mat_file)
         # dont need to distinguish general and wfm .mat files here 
-        for mat_file in list_mat_files:
-            local_filename = mat_file['file_name']
-            artifact_id = mat_file['mat_id']
-            response = self.session.get(f'{self.base_url}/v1/projects/{self.project_key}/artifacts/{artifact_id}', stream=True)
-            response.raw.decode_content = True
-            with open('./download_files/' + local_filename, 'wb') as f:
-                shutil.copyfileobj(response.raw, f)
-            print('Response Received: ' + str(response.status_code))
+        with alive_bar(len(list_mat_files)) as bar:
+            for mat_file in list_mat_files:
+                bar()
+
+                local_filename = mat_file['file_name']
+                artifact_id = mat_file['mat_id']
+                response = self.session.get(f'{self.base_url}/v1/projects/{self.project_key}/artifacts/{artifact_id}', stream=True)
+                response.raw.decode_content = True
+                with open('./download_files/' + local_filename, 'wb') as f:
+                    shutil.copyfileobj(response.raw, f)
+                #print('Response Received: ' + str(response.status_code))
+
+                time.sleep(0.1)
         # until this part, all .mat has been downloaded to the /download_files folder and license was copied into it--> used for the api request 
 
     def deep_indexing_operaiton(self):
@@ -158,11 +171,18 @@ class Deep_Indexing_Agent:
             gen_mat_file = data['general_mat']
             wfm_mat_files = data['wfm_mat']
 
-        # create json for general .mat file 
         read_general_mat(gen_mat_file)
-        # create json for waveform .mat files 
-        for i in range(len(wfm_mat_files)):
-            read_waveform_mat(wfm_mat_files[i])
+
+        with alive_bar(len(wfm_mat_files)) as bar:
+            # create json for general .mat file 
+            # create json for waveform .mat files 
+            for i in range(len(wfm_mat_files)):
+                bar()
+
+                read_waveform_mat(wfm_mat_files[i])
+
+                time.sleep(0.1)
+
         os.chdir("..")
 
     # def delete_files(self):

@@ -19,7 +19,7 @@ def return_type_as_string(in_var):
         return "integer"
 
 def read_general_mat(in_mat_file):
-    print("3.1 Read General .MAT File--------------------------")
+    print("4.1 Read General .MAT File--------------------------")
 
     # check whether current working directory is the folder containing data files 
     subfolder_check = r"\download_files"

@@ -87,7 +87,6 @@ with alive_bar(len(list_mat_files)) as bar:
         response.raw.decode_content = True
         with open('./download_files/' + local_filename, 'wb') as f:
             shutil.copyfileobj(response.raw, f)
-
         #print('Response Received: ' + str(response.status_code))
 
         time.sleep(0.1)
