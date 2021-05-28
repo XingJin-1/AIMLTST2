@@ -1,11 +1,12 @@
+import os 
+import numpy as np
+import json
+import shutil
 import requests
 from requests_negotiate_sspi import HttpNegotiateAuth
-import json
 import warnings
-import numpy as np
-import os 
 
-import shutil
+
 from loadMATLib import loadmat
 
 

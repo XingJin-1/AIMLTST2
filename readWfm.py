@@ -1,14 +1,14 @@
+import os 
+import numpy as np
+import json
+import shutil
+import requests
+from requests_negotiate_sspi import HttpNegotiateAuth
+import warnings
+
 from readMAT import return_type_as_string
 from loadMATLib import loadmat
 
-import requests
-from requests_negotiate_sspi import HttpNegotiateAuth
-import json
-import warnings
-import numpy as np
-import os 
-
-import shutil
 
 
 def read_waveform_mat(in_mat_file):
