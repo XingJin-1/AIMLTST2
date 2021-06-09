@@ -12,8 +12,6 @@ from loadMATLib import loadmat
 
 
 def read_waveform_mat(in_mat_file):
-    #print("4.2 Read Wavefrom .MAT File--------------------------")
-
     # check whether current working directory is the folder containing data files 
     subfolder_check = r"\download_files"
     if subfolder_check not in os.getcwd():

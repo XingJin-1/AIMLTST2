@@ -74,7 +74,7 @@ class Data_Uploader:
 
                 time.sleep(0.1)
 
-        print(len(list_mat_id))
+        print("Number of the uploaded files: ", len(list_mat_id))
         os.chdir("..")
 
         # write id, name and last modified date to the log json file  
@@ -173,6 +173,7 @@ class Deep_Indexing_Agent:
 
         read_general_mat(gen_mat_file)
 
+        print("4.2 Generate JSON for the Wavefrom .MAT File--------------------------") 
         with alive_bar(len(wfm_mat_files)) as bar:
             # create json for general .mat file 
             # create json for waveform .mat files 
@@ -198,16 +199,17 @@ def main():
     print("---------------------This is the start of the main funciton.------------------------")
     print("PROJECT_ROOT: ", PROJECT_ROOT)
     print("DATA_ROOT: ", DATA_ROOT)
+    
     base_url = 'https://aimlms.muc-gp.icp.infineon.com'
     project_key = 'AIMLTST2'
 
-    data_uploader = Data_Uploader(base_url, project_key)
-    data_uploader.connect_to_DL()
-    data_uploader.upload_files()
+    # data_uploader = Data_Uploader(base_url, project_key)
+    # data_uploader.connect_to_DL()
+    # data_uploader.upload_files()
 
     deep_Indexing_Agent = Deep_Indexing_Agent(base_url, project_key)
     deep_Indexing_Agent.connect_to_DL()
-    deep_Indexing_Agent.download_files()
+    # deep_Indexing_Agent.download_files()
     deep_Indexing_Agent.deep_indexing_operaiton()
     
     print("---------------------This is the end of the main funciton.------------------------")

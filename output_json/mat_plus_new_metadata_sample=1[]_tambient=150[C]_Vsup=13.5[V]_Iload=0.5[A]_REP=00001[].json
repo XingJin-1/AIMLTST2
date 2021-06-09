@@ -2,13 +2,13 @@
     "deepIndexing": [
         {
             "artifact_metadata": {
-                "artifact_id": "6f6a30a9626843aca49801923eb16d16",
+                "artifact_id": "3e8be858b24f49d08d450e3865277407",
                 "username": "Xing Jin",
                 "source": "local test",
                 "filetype": "atv-ps-wfm"
             },
             "metadata": {
-                "timestamp": "2021-05-28T12:58:06"
+                "timestamp": "2021-06-09T09:09:53"
             },
             "operating_conditions": [
                 {
@@ -38,13 +38,13 @@
         },
         {
             "artifact_metadata": {
-                "artifact_id": "6f6a30a9626843aca49801923eb16d16",
+                "artifact_id": "3e8be858b24f49d08d450e3865277407",
                 "username": "Xing Jin",
                 "source": "local test",
                 "filetype": "atv-ps-wfm"
             },
             "metadata": {
-                "timestamp": "2021-05-28T12:58:06"
+                "timestamp": "2021-06-09T09:09:53"
             },
             "operating_conditions": [
                 {
