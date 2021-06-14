@@ -42,8 +42,15 @@ def read_general_mat(in_mat_file):
     # create output file, have to move one folder up, have to move one folder up
     output_file_path = '../output_json/' + in_mat_file['file_name'].replace('.mat' , '.json')
 
+    # multiple blocks should be inside a array struct
+    array_block = {}
+    array_block['deepIndexing'] = []
+
     first_json_write = {}
-    first_json_write['deepIndexing'] = []
+    first_json_write['internalMetadata'] = {}
+    first_json_write['internalMetadata']['deepIndexing'] = array_block['deepIndexing']
+
+
     with open(output_file_path, 'w', encoding='utf-8') as outfile:
             json.dump(first_json_write, outfile, indent=4)
 
@@ -92,7 +99,7 @@ def read_general_mat(in_mat_file):
             with open(output_file_path, "r+") as outfile:
                 data = json.load(outfile)
                 #data.update(out_json)
-                data['deepIndexing'].append(out_json) #first_json_write['deepIndexing'].append(out_json)
+                data['internalMetadata']['deepIndexing'].append(out_json) #first_json_write['deepIndexing'].append(out_json)
                 outfile.seek(0)
                 json.dump(data, outfile, indent=4)
 
@@ -111,6 +118,6 @@ def read_general_mat(in_mat_file):
             with open(output_file_path, "r+") as outfile:
                 data = json.load(outfile)
                 #data.update(out_json)
-                data['deepIndexing'].append(out_json) #first_json_write['deepIndexing'].append(out_json)
+                data['internalMetadata']['deepIndexing'].append(out_json) #first_json_write['deepIndexing'].append(out_json)
                 outfile.seek(0)
                 json.dump(data, outfile, indent=4)

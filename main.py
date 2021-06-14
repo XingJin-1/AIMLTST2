@@ -179,9 +179,7 @@ class Deep_Indexing_Agent:
             # create json for waveform .mat files 
             for i in range(len(wfm_mat_files)):
                 bar()
-
                 read_waveform_mat(wfm_mat_files[i])
-
                 time.sleep(0.1)
 
         os.chdir("..")
@@ -196,7 +194,7 @@ class Deep_Indexing_Agent:
     #         print('Response Received: ' + str(response.status_code) + ': ' + response.text)
 
 def main():
-    print("---------------------This is the start of the main funciton.------------------------")
+
     print("PROJECT_ROOT: ", PROJECT_ROOT)
     print("DATA_ROOT: ", DATA_ROOT)
     
@@ -209,10 +207,16 @@ def main():
 
     deep_Indexing_Agent = Deep_Indexing_Agent(base_url, project_key)
     deep_Indexing_Agent.connect_to_DL()
-    # deep_Indexing_Agent.download_files()
+    #deep_Indexing_Agent.download_files()
     deep_Indexing_Agent.deep_indexing_operaiton()
     
-    print("---------------------This is the end of the main funciton.------------------------")
-
 if __name__ == "__main__":
     main()
+
+
+
+# def main(data):
+
+#     download_files(data["url"])
+
+#     deep_indexing_operaiton()
